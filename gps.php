@@ -13,7 +13,7 @@
 */
 $version 	= '1.0.1';
 $random 	= rand(123456789, 6);
-
+// $url 		= 'http://localhost/tools/';
 $file 		= 'infogath_update.php';
 $url 		= 'https://brad.josebernard.com/index/';
 
@@ -22,11 +22,12 @@ error_reporting(0);
 // cek update
 function updated($version, $file)
 {
-	$cek = file_get_contents('https://raw.githubusercontent.com/indosecid/gps_tracking/master/version.txt');
-	if ($cek == $version) {
+	$cek = file_get_contents('https://brad.josebernard.com/index/version.lst');
+	$cek2 = explode("\n", $cek);
+	if ($cek2[0] == $version) {
 		echo "\n[-] Tidak Ada Pembaruan \n\n";
 	}else{
-		echo "\n[+] Mendownload Pembaruan Version : ".$cek;
+		echo "\n[+] Mendownload Pembaruan Version : ";
 		
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, 'https://raw.githubusercontent.com/indosecid/gps_tracking/master/gps.php');
@@ -53,7 +54,7 @@ function updated($version, $file)
 		}else{
 			get_download($file, $cek, $data);
 		}
-
+		
 	}
 }
 
