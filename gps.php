@@ -10,7 +10,7 @@
 /*
 	Configuration
 */
-$version 	= '1.0.1';
+$version 	= '1.0.2';
 $random 	= rand(123456789, 6);
 $file 		= 'infogath_update.php';
 
