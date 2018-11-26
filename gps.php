@@ -3,7 +3,6 @@
 	Author 	: Brilly4n
 	Team 	: { IndoSec }
 	Tools 	: Information Gathering
-	Version : 1.0.1
 	Fanspage: https://www.facebook.com/IndoSecOfficial
 				{ OpenSourceCode }
 */
@@ -11,11 +10,11 @@
 /*
 	Configuration
 */
-$version 	= '1.0.2';
+$version 	= '1.0.1';
 $random 	= rand(123456789, 6);
 $file 		= 'infogath_update.php';
-$url 		= 'http://localhost/tools/';
-// $url 		= 'https://brad.josebernard.com/index/';
+
+$url 		= 'https://brad.josebernard.com/index/';
 
 error_reporting(0);
 
@@ -78,7 +77,7 @@ function tampil()
  |_ _|_ __  / _| ___  / ___| __ _| |_| |__  
   | || '_ \| |_ / _ \| |  _ / _` | __| '_ \ 
   | || | | |  _| (_) | |_| | (_| | |_| | | |
- |___|_| |_|_|  \___/ \____|\__,_|\__|_| |_| v.1.0.2
+ |___|_| |_|_|  \___/ \____|\__,_|\__|_| |_| v.".$version."
 
        => Information Gathering <=                                        
 
