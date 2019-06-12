@@ -1,2 +1,2 @@
-# gps_tracking
-GPS Tracking - { IndoSec }
+# GPS Tracking GUI Version
+https://gps.indsc.me
